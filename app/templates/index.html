@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+
+        {% for u in users %}
+
+        {% if u.username == current_user.username %}
+
+        {% elif u.flag %}
+        <li class="list-group-item"><b>{{ u.username }}</b></li>
+        <a class="btn btn-danger" href="{{ url_for('ig.unfollow', user_id=u.id) }}">UNFollow</a>
+
+        {% else %}
+        <li class="list-group-item"><b>{{ u.username }}</b></li>
+        <a class="btn btn-success" href="{{ url_for('ig.follow', user_id=u.id) }}">Follow</a>
+
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

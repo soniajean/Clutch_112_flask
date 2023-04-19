@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>This will be the signup or REGISTER page!</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <form method="POST" class="col-4">
+            {{ form.hidden_tag() }}
+
+            {{ form.username(class='form-control', placeholder='Username') }}
+            {{ form.email(class='form-control', placeholder='Email') }}
+            {{ form.password(class='form-control', placeholder='Password') }}
+            {{ form.confirm_password(class='form-control', placeholder='Confirm Password') }}
+            {{ form.submit(class='btn btn-primary', placeholder='Submit') }}
+
+        </form>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

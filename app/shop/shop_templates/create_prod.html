@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <h5>Create New Product</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+
+        <form method="POST" class='col-6'>
+            {{ form.hidden_tag() }}
+
+            {{ form.make(class='form-control', placeholder='Make') }}
+            {{ form.model(class='form-control', placeholder='Model') }}
+            {{ form.year(class='form-control', placeholder='Year') }}
+            {{ form.miles(class='form-control', placeholder='Miles') }}
+            {{ form.desc(class='form-control', placeholder='Description') }}
+            {{ form.name(class='form-control', placeholder='Name') }}
+            {{ form.img_url(class='form-control', placeholder='img_url') }}
+            {{ form.price(class='form-control', placeholder='price') }}
+            {{ form.submit(class='btn btn-primary', placeholder='Create Product!') }}
+        </form>
+        
+    </div>
+
+    {% endblock %}

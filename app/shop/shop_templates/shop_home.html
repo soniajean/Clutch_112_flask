@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3> Here's the SHOP! All the products are gonna show here!</h3>
+<div class="container">
+  <div class="row justify-content-center mt-3 mb-3">
+    <div class="col-3 p-3">
+      <a href="{{ url_for('shop.createProd') }}" class="btn btn-outline-dark">Create New Product</a>
+    </div>
+  </div>
+
+
+
+    {% for p in prods %}
+
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <a href="{{url_for('shop.indProd', prod_id=p.id)}}"><img src="{{p.img_url}}" class="card-img-top"
+            alt="{{p.name}}"></a>
+        <div class="card-body">
+          <h5 class="card-title">{{p.year}} {{p.make}} {{p.model}}</h5>
+          <!-- Grabbed subtitle text from another card here for author -->
+          <h4>Price: ${{ p.price }}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Special name? {{ p.name }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Miles: {{p.miles}}</h6>
+          <p class="card-text">{{p.desc}}</p>
+          <p><small>Posted: {{ p.date_created }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+
+
+</div>
+{% endblock %}
