@@ -1,0 +1,3 @@
+[console_scripts]
+pip-login = pip_login:main
+

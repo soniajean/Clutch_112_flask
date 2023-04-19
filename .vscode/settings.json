@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "flask",
+            "connectString": "postgres://crepkhtg:g3jG7cyu27qJNFugmQVLt_6GYcZeuUar@ruby.db.elephantsql.com/crepkhtg"
+        }
+    ]
+}
