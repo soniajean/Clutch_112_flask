@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\sonia\Documents\Coding Temple\Clutch_112_flask\venv"
+VIRTUAL_ENV="C:\Users\sonia\OneDrive\Desktop\Documents\Clutch_112_flask\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
