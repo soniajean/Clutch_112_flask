@@ -45,16 +45,12 @@ def registerPage():
     if request.method == 'POST':
         if form.validate():
             username = form.username.data
-            email = form.email.data
             password = form.password.data
             if User.query.filter_by(username=username).first():
                 flash('That username already exists, please try another!', 'warning')
                 return redirect(url_for('auth.registerPage'))
-            if User.query.filter_by(email=email).first():
-                flash('that email has been used previously, try again', 'warning')
-                return redirect(url_for('auth.registerPage'))
-
-            user = User(username, email, password)            
+           
+            user = User(username,password)            
             user.saveUser()
 
             flash(f'Welcome to INSTURBlog {user.username}', 'success')

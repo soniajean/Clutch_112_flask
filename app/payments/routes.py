@@ -39,7 +39,7 @@ def getCustomer(user):
     try:
         customer = stripe.Customer.retrieve(user['uid'])
     except:
-        customer = stripe.Customer.create(id=user['uid'], name=user['displayName'], email=user['email'])
+        customer = stripe.Customer.create(id=user['uid'], name=user['displayName'])
     # print(customer)
     return customer
 

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="producttitle">Check out our Products</h1> 
+
+{% for p in products %}
+<h1>{{ p.title }}</h1> 
+<div class="productcard" style="width: 18rem;">
+    <a href="{{ url_for('cart.viewSingleProduct', product_id=p.product_id) }}"><img src="{{ p.img_url }}" class="card-img-top" alt="{{ p.title }}"></a></a>
+    <div class="card-body">
+        <h5 class="card-title">{{ p.title }}</h5>
+        <p class="card-text">{{ p.price }}</p>
+ 
+        <a href="{{ url_for('cart.addToCart', product_id=p.product_id) }}" class="btn btn-dark">Add to Cart!</a>
+        <a href="{{ url_for('cart.viewSingleProduct', product_id=p.product_id) }}" class="btn btn-outline-dark">View Details</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

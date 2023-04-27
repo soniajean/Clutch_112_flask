@@ -1,81 +1,63 @@
 from flask import Blueprint, request
-from ..models import Post, Product
+from ..models import Product
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
-@api.get('/posts')
-def getPosts():
-    posts = Post.query.all()
-    postlist = [p.to_dict() for p in posts]
+
+
+@api.get('/product')
+def getProduct():
+    product = Product.query.all()
+    productlist = [p.to_dict() for p in product]
     return {
         'status': 'ok',
-        'data': postlist
-    }
-@api.route('/products')
-def getProds():
-    prods = Product.query.all()
-    prodlist = [p.to_dict() for p in prods]
-    return {
-        'status': 'ok',
-        'data' : prodlist,
-        'item_count' : len(prodlist)
+        'data': productlist
     }
 
-@api.get('/post/<int:post_id>')
-def getSinglePost(post_id):
-    p = Post.query.get(post_id)
+@api.get('/product/<int:product_id>')
+def getSingleProduct(product_id):
+    p = Product.query.get(product_id)
     if p:
-        post = p.to_dict()
+        product = p.to_dict()
         return {
             'status': 'ok',
-            'data' : post
+            'data' : product
         }
     return {
         'status' : 'NOT ok',
-        'message' : 'There is no post for the id you have submitted!'
-    }
-@api.route('/product/<int:prod_id>')
-def getIndProd(prod_id):
-    p = Product.query.get(prod_id)
-    if p:
-        prod = p.to_dict()
-        return {
-            'status': 'ok',
-            'data': prod,
-        }
-    return {
-        'status': 'Error',
-        'message': 'No product with that ID exists',
+        'message' : 'That product is not available!!'
     }
 
-@api.post('/createpost')
-def createPostAPI():
+@api.post('/createproduct')
+def createProductAPI():
     data = request.json # This coming from the POST request body
 
     title = data['title']
+    price = data['price']
+    description = data['description']
+    category = data['category']
     img_url = data['img_url']
-    body = data['body']
-    user_id = data['user_id']
+   
 
-    new = Post(title, img_url, body, user_id)
-    new.savePost()
+    new = Product(title, price, description, category, img_url)
+    new.saveProduct()
     return {
         'status' : 'ok',
-        'message' : 'new post has been created!'
+        'message' : 'new product has been created!'
     }
 
-@api.get('/post/author/<int:user_id>')
+@api.get('/product/item/<int:user_id>')
 def getPostsByUser(user_id):
-    posts = Post.query.filter(Post.user_id == user_id).all()
+    product = Product.query.filter(Product.user_id == user_id).all()
     # Just so we can see the other example of the same query above:
     # posts = Post.query.filter_by(user_id == user_id).all()
 
-    if posts:
+    if product:
         return {
             'status' : 'ok',
-            'posts' : [p.to_dict() for p in posts]
+            'product' : [p.to_dict() for p in product]
         }
     return {
         'status' : ' NOT ok',
-        'message' : 'No posts available to return from that ID'
+        'message' : 'No product available to return from that ID'
     }

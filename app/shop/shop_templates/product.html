@@ -7,10 +7,10 @@
 <div class="card" style="width: 18rem;">
     <img src="{{prod.img_url}}" class="card-img-top" alt="{{prod.name}}">
     <div class="card-body">
-        <h5 class="card-title">{{prod.name}}-- (A {{prod.year}} {{prod.make}} {{prod.model}})</h5>
+        <h5 class="card-title">{{prod.title}}-- (A {{prod.desc}} {{prod.category}} {{prod.rating}})</h5>
         <!-- Grabbed subtitle text from another card here for author -->
         <h4>Price: ${{prod.price}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ prod.miles }} miles</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ prod.desc }} miles</h6>
         <p class="card-text">{{prod.desc}}</p>
         <!--  -->
         <a href="{{ url_for('shop.updateProd', prod_id=prod.id) }}" class="btn btn-primary">Update</a>
